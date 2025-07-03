@@ -50,14 +50,7 @@ export const ConfirmEmailOtpPage: React.FC = () => {
                         },
                     ]}
                 >
-                    <Input.OTP
-                        placeholder="Enter 6-digit PIN"
-                        maxLength={6}
-                        onChange={(e) => {
-                            // Allow only digits
-                            e.target.value = e.target.value.replace(/\D/g, "");
-                        }}
-                    />
+                    <Input.OTP />
                 </Form.Item>
 
                 <Form.Item>

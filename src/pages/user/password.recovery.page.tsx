@@ -32,7 +32,8 @@ export const PasswordRecoveryPage: React.FC = () => {
         dispatch(userActions.setRecoveryPasswordPayload({
             token: token,
             email: email,
-            timestamp: timeStamp
+            timestamp: timeStamp,
+            newPassword: null
         }))
         console.log('2' + email);
 
@@ -42,9 +43,9 @@ export const PasswordRecoveryPage: React.FC = () => {
     async function handleRecoverPassword(payload: { newPassword: string }) {
         try {
             const result = await dispatch(recoverPassword({
-                email: forgotPasswordPayload.email,
-                timestamp: forgotPasswordPayload.timestamp,
-                token: forgotPasswordPayload.token,
+                email: forgotPasswordPayload?.email || '',
+                timestamp: forgotPasswordPayload?.timestamp || '',
+                token: forgotPasswordPayload?.token || '',
                 newPassword: payload.newPassword
             }));
 
@@ -53,7 +54,7 @@ export const PasswordRecoveryPage: React.FC = () => {
                 navigate("/login");
             }
         } catch (err) {
-            message.error(err.message);
+            message.error("" + err);
         }
     }
 
