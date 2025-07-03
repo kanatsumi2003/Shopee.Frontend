@@ -21,11 +21,11 @@ jobs:
       - name: Set Docker env
         run: |
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "${{ secrets.ENV_FILE_PRODUCTION }}" > .env.production.deployment
+            echo "${{ secrets.ENV_FILE_PRODUCTION }}" > .env
             echo "TAGS=${{ vars.VERSION_PRODUCTION }}" >> $GITHUB_ENV
           
           elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
-            echo "${{ secrets.ENV_FILE_STAGING }}" > .env.production.deployment
+            echo "${{ secrets.ENV_FILE_STAGING }}" > .env
             echo "TAGS=${{ vars.VERSION_STAGING }}" >> $GITHUB_ENV
           
           fi
